@@ -38,8 +38,26 @@ function selectionSort(&$arr, $key)
 }
 
 selectionSort($students, 'name');
-?>
 
+$id = $_POST['id'];
+$name = $_POST['name'];
+$usn = $_POST['usn'];
+$branch = $_POST['branch'];
+$email = $_POST['em'];
+$address = $_POST['ads'];
+
+$sql="INSERT INTO students(id,name,usn,branch,email,address)VALUES('$id','$name','$usn','$branch','$email','$address')";
+if($conn->query($sql) === TRUE) {
+    echo "New record created successfully
+<br>";
+    echo "<a href='registration.html'>Go back</a>";
+}else{
+    echo "Error:" . $sql . "<br>" .
+    $conn->error;
+}
+$conn->close();
+
+?>
 <!DOCTYPE html>
 
 <head>
